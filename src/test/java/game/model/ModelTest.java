@@ -1,5 +1,6 @@
 package game.model;
 
+import java.awt.Rectangle;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

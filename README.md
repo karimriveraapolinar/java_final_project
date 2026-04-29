@@ -18,12 +18,12 @@ The project is organized into three primary layers:
 1.  **Using Maven**:
     ```bash
     mvn compile
-    mvn exec:java -Dexec.mainClass="main"
+    mvn exec:java -Dexec.mainClass="game.Main"
     ```
 2.  **Manual Compilation**:
     ```bash
-    javac -d bin src/main/java/game/**/*.java main.java
-    java -cp bin main
+    javac -d bin src/main/java/game/**/*.java
+    java -cp bin game.Main
     ```
 
 ### Executing the Test Suite
