@@ -52,4 +52,61 @@ public class ModelTest {
         model.update();
         assertTrue("Car should be crashed", model.getCurrentStatus().isCrashed());
     }
+
+    @Test
+    public void testCarFriction() {
+        Car car = new Car(100, 100);
+        car.accelerate(); // Give it some speed
+        double initialSpeed = car.getSpeed();
+        car.move(); // Friction should apply during move
+        assertTrue("Speed should decrease due to friction", car.getSpeed() < initialSpeed);
+    }
+
+    @Test
+    public void testCarTurning() {
+        Car car = new Car(100, 100);
+        car.accelerate(); // Need speed to turn
+        double initialAngle = car.getAngle();
+        car.turnRight();
+        assertTrue("Angle should have increased", car.getAngle() > initialAngle);
+        
+        car.turnLeft();
+        assertEquals("Angle should be back to initial", initialAngle, car.getAngle(), 0.001);
+    }
+
+    @Test
+    public void testLevelReset() {
+        GameModel model = GameModel.getInstance();
+        model.loadLevel(1);
+        model.getCar().accelerate();
+        model.getCar().move();
+        
+        // Reset level
+        model.loadLevel(1);
+        assertEquals("Car X should reset to 50", 50, model.getCar().getX(), 0.001);
+        assertEquals("Car Y should reset to 50", 50, model.getCar().getY(), 0.001);
+        assertEquals("Speed should reset to 0", 0, model.getCar().getSpeed(), 0.001);
+        assertFalse("Status should not be crashed", model.getCurrentStatus().isCrashed());
+    }
+
+    @Test
+    public void testTimerFormatting() {
+        GameTimer timer = new GameTimer();
+        // Manually check formatting logic
+        assertEquals("Initial time should be 00:00", "00:00", timer.getFormattedTime());
+    }
+
+    @Test
+    public void testParkingSuccess() {
+        GameModel model = GameModel.getInstance();
+        model.loadLevel(1);
+        Car car = model.getCar();
+        Rectangle spot = model.getParkingSpot();
+        
+        // Position car inside the parking spot
+        car.setPosition(spot.x + 5, spot.y + 5);
+        model.update();
+        
+        assertTrue("Car should be successfully parked", model.getCurrentStatus().isSuccess());
+    }
 }
