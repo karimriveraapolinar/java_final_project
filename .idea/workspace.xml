@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a80789eb-f9ae-40f8-af85-5daee00da2f3" name="Changes" comment="added code to pom.xml (used internet)">
+    <list default="true" id="a80789eb-f9ae-40f8-af85-5daee00da2f3" name="Changes" comment="Added UserInterface.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/GameModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/GameObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/controller/InputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/controller/InputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/GameTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/model/GameTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/ParkingStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/model/ParkingStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/PlayerStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/model/PlayerStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/view/CarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/view/CarView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/view/GameOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/view/GameOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/view/ParkingLotView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/view/ParkingLotView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/view/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/view/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/game/model/ModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/game/model/ModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,29 +49,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.parking-game.html.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/karimrivera-apolinar/IdeaProjects/java_final_project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.parking-game.html.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/karimrivera-apolinar/IdeaProjects/java_final_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -87,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1777391166567</updated>
       <workItem from="1777391168595" duration="3453000" />
-      <workItem from="1777469032452" duration="1658000" />
+      <workItem from="1777469032452" duration="2429000" />
     </task>
     <task id="LOCAL-00001" summary="Added architecture for maven and MVC">
       <option name="closed" value="true" />
@@ -113,7 +124,103 @@
       <option name="project" value="LOCAL" />
       <updated>1777470448097</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Edited files">
+      <option name="closed" value="true" />
+      <created>1777470755743</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470755743</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added car.java">
+      <option name="closed" value="true" />
+      <created>1777470767187</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470767187</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added carView.java">
+      <option name="closed" value="true" />
+      <created>1777470773709</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470773709</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added GameOverlay.java">
+      <option name="closed" value="true" />
+      <created>1777470784173</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470784173</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added GameTimer.java">
+      <option name="closed" value="true" />
+      <created>1777470790357</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470790357</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added InputController.java">
+      <option name="closed" value="true" />
+      <created>1777470800932</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470800932</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added MenuController.java">
+      <option name="closed" value="true" />
+      <created>1777470806725</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470806725</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added ModelTest.java">
+      <option name="closed" value="true" />
+      <created>1777470815373</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470815373</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added ParkingLotView.java">
+      <option name="closed" value="true" />
+      <created>1777470828282</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470828282</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added ParkingStatus.java">
+      <option name="closed" value="true" />
+      <created>1777470835501</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470835501</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added PlayerStats.java">
+      <option name="closed" value="true" />
+      <created>1777470846086</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470846086</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added UserInterface.java">
+      <option name="closed" value="true" />
+      <created>1777470857401</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470857401</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +230,18 @@
     <MESSAGE value="Added architecture for maven and MVC" />
     <MESSAGE value="created files" />
     <MESSAGE value="added code to pom.xml (used internet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added code to pom.xml (used internet)" />
+    <MESSAGE value="Edited files" />
+    <MESSAGE value="Added car.java" />
+    <MESSAGE value="Added carView.java" />
+    <MESSAGE value="Added GameOverlay.java" />
+    <MESSAGE value="Added GameTimer.java" />
+    <MESSAGE value="Added InputController.java" />
+    <MESSAGE value="Added MenuController.java" />
+    <MESSAGE value="Added ModelTest.java" />
+    <MESSAGE value="Added ParkingLotView.java" />
+    <MESSAGE value="Added ParkingStatus.java" />
+    <MESSAGE value="Added PlayerStats.java" />
+    <MESSAGE value="Added UserInterface.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added UserInterface.java" />
   </component>
 </project>
