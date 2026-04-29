@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a80789eb-f9ae-40f8-af85-5daee00da2f3" name="Changes" comment="" />
+    <list default="true" id="a80789eb-f9ae-40f8-af85-5daee00da2f3" name="Changes" comment="added code to pom.xml (used internet)">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/GameModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/model/GameObserver.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,11 +87,42 @@
       <option name="presentableId" value="Default" />
       <updated>1777391166567</updated>
       <workItem from="1777391168595" duration="3453000" />
-      <workItem from="1777469032452" duration="1198000" />
+      <workItem from="1777469032452" duration="1658000" />
     </task>
+    <task id="LOCAL-00001" summary="Added architecture for maven and MVC">
+      <option name="closed" value="true" />
+      <created>1777470405469</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470405469</updated>
+    </task>
+    <task id="LOCAL-00002" summary="created files">
+      <option name="closed" value="true" />
+      <created>1777470422702</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470422702</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added code to pom.xml (used internet)">
+      <option name="closed" value="true" />
+      <created>1777470448097</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1777470448097</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added architecture for maven and MVC" />
+    <MESSAGE value="created files" />
+    <MESSAGE value="added code to pom.xml (used internet)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added code to pom.xml (used internet)" />
   </component>
 </project>
