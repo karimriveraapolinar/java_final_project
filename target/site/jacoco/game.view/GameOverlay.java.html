@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameOverlay.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">park-it</a> &gt; <a href="index.source.html" class="el_package">game.view</a> &gt; <span class="el_source">GameOverlay.java</span></div><h1>GameOverlay.java</h1><pre class="source lang-java linenums">package game.view;
+
+import game.model.GameModel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
+/**
+ * Displays overlay elements like timer, leaderboard, and menus.
+ */
+<span class="nc" id="L11">public class GameOverlay {</span>
+    public void draw(Graphics g) {
+<span class="nc" id="L13">        GameModel model = GameModel.getInstance();</span>
+        
+<span class="nc" id="L15">        g.setColor(Color.WHITE);</span>
+<span class="nc" id="L16">        g.setFont(new Font(&quot;Arial&quot;, Font.BOLD, 18));</span>
+        
+        // Draw Timer
+<span class="nc" id="L19">        g.drawString(&quot;Time: &quot; + model.getTimer().getFormattedTime(), 20, 30);</span>
+        
+        // Draw Level
+<span class="nc" id="L22">        g.drawString(&quot;Level: &quot; + model.getStats().getCurrentLevel(), 20, 60);</span>
+        
+        // Draw Status Messages
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (model.getCurrentStatus().isCrashed()) {</span>
+<span class="nc" id="L26">            g.setColor(Color.RED);</span>
+<span class="nc" id="L27">            g.setFont(new Font(&quot;Arial&quot;, Font.BOLD, 48));</span>
+<span class="nc" id="L28">            g.drawString(&quot;CRASHED!&quot;, 300, 300);</span>
+<span class="nc" id="L29">            g.setFont(new Font(&quot;Arial&quot;, Font.PLAIN, 24));</span>
+<span class="nc" id="L30">            g.drawString(&quot;Press 'R' to Restart&quot;, 300, 350);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        } else if (model.getCurrentStatus().isSuccess()) {</span>
+<span class="nc" id="L32">            g.setColor(Color.GREEN);</span>
+<span class="nc" id="L33">            g.setFont(new Font(&quot;Arial&quot;, Font.BOLD, 48));</span>
+<span class="nc" id="L34">            g.drawString(&quot;PARKED!&quot;, 300, 300);</span>
+<span class="nc" id="L35">            g.setFont(new Font(&quot;Arial&quot;, Font.PLAIN, 24));</span>
+<span class="nc" id="L36">            g.drawString(&quot;Press 'Enter' for Next Level&quot;, 280, 350);</span>
+        }
+<span class="nc" id="L38">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

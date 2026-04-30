@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">park-it</a> &gt; <a href="index.source.html" class="el_package">game</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package game;
+
+import game.controller.InputController;
+import game.model.GameModel;
+import game.view.UserInterface;
+import javax.swing.JFrame;
+import javax.swing.Timer;
+
+/**
+ * Entry point for the &quot;Park It&quot; Java game.
+ * Initializes MVC components and starts the game loop.
+ */
+<span class="nc" id="L13">public class Main {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L15">        JFrame frame = new JFrame(&quot;Park It - Java Edition&quot;);</span>
+<span class="nc" id="L16">        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L18">        GameModel model = GameModel.getInstance();</span>
+<span class="nc" id="L19">        UserInterface view = new UserInterface();</span>
+<span class="nc" id="L20">        InputController controller = new InputController();</span>
+
+<span class="nc" id="L22">        frame.add(view);</span>
+<span class="nc" id="L23">        view.addKeyListener(controller);</span>
+
+<span class="nc" id="L25">        frame.pack();</span>
+<span class="nc" id="L26">        frame.setLocationRelativeTo(null);</span>
+<span class="nc" id="L27">        frame.setVisible(true);</span>
+
+        // Game Loop (approx 60 FPS)
+<span class="nc" id="L30">        Timer gameLoop = new Timer(16, e -&gt; {</span>
+<span class="nc" id="L31">            controller.update();</span>
+<span class="nc" id="L32">            model.update();</span>
+<span class="nc" id="L33">        });</span>
+<span class="nc" id="L34">        gameLoop.start();</span>
+<span class="nc" id="L35">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

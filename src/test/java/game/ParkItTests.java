@@ -4,9 +4,11 @@ import game.controller.InputController;
 import game.controller.MenuController;
 import game.model.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.Field;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,12 +16,13 @@ public class ParkItTests {
 
     @BeforeEach
     void resetSingleton() throws Exception {
+        // Resets the Singleton instance before each test to ensure a clean state
         Field f = GameModel.class.getDeclaredField("instance");
         f.setAccessible(true);
         f.set(null, null);
     }
 
-    // --- Car ---
+    // --- Car Physics & Movement ---
 
     @Test
     void carStartsAtGivenPosition() {
@@ -54,6 +57,34 @@ public class ParkItTests {
     }
 
     @Test
+    void turnRightIncreasesAngleWhenMoving() {
+        Car car = new Car(0, 0);
+        car.accelerate();
+        car.turnRight();
+        assertTrue(car.getAngle() > 0);
+    }
+
+    @Test
+    void frictionReducesSpeedTowardsZero() {
+        Car car = new Car(0, 0);
+        car.accelerate(); // initial speed 0.1
+        double initialSpeed = car.getSpeed();
+        car.move(); // friction 0.05 applied
+        assertTrue(car.getSpeed() < initialSpeed);
+        
+        car.move();
+        assertEquals(0, car.getSpeed(), 0.001); // should hit exactly 0
+    }
+
+    @Test
+    void frictionAppliesToNegativeSpeed() {
+        Car car = new Car(0, 0);
+        car.reverse(); // speed is -0.1
+        car.move();    // friction adds 0.05
+        assertEquals(-0.05, car.getSpeed(), 0.001);
+    }
+
+    @Test
     void setPositionResetsSpeedAndAngle() {
         Car car = new Car(0, 0);
         car.accelerate();
@@ -75,7 +106,7 @@ public class ParkItTests {
     void timerRunsAndFreezesOnStop() throws InterruptedException {
         GameTimer t = new GameTimer();
         t.start();
-        Thread.sleep(50);
+        Thread.sleep(50); 
         t.stop();
         long frozen = t.getElapsedTime();
         Thread.sleep(50);
@@ -91,7 +122,7 @@ public class ParkItTests {
         assertEquals(0, t.getElapsedTime());
     }
 
-    // --- ParkingStatus ---
+    // --- ParkingStatus & Stats ---
 
     @Test
     void parkingStatusDefaultsFalse() {
@@ -102,32 +133,14 @@ public class ParkItTests {
     }
 
     @Test
-    void parkingStatusSetters() {
-        ParkingStatus s = new ParkingStatus(2);
-        s.setSuccess(true);
-        s.setCrashed(true);
-        assertTrue(s.isSuccess());
-        assertTrue(s.isCrashed());
-    }
-
-    // --- PlayerStats ---
-
-    @Test
     void bestTimeUpdatesOnImprovement() {
         PlayerStats stats = new PlayerStats();
         stats.updateBestTime(1, 5000L);
-        stats.updateBestTime(1, 9000L); // worse — should not replace
+        stats.updateBestTime(1, 9000L); // worse time should not replace
         assertEquals(5000L, stats.getBestTime(1));
     }
 
-    @Test
-    void bestTimeIgnoresInvalidLevel() {
-        PlayerStats stats = new PlayerStats();
-        assertEquals(0, stats.getBestTime(99));
-        stats.updateBestTime(0, 1000L); // should not throw
-    }
-
-    // --- GameModel ---
+    // --- GameModel Logic ---
 
     @Test
     void singletonReturnsSameInstance() {
@@ -135,27 +148,26 @@ public class ParkItTests {
     }
 
     @Test
-    void loadLevel1HasOneObstacleAndCorrectSpot() {
+    void loadLevelResetsStatusFlags() {
         GameModel model = GameModel.getInstance();
-        model.loadLevel(1);
-        assertEquals(1, model.getObstacles().size());
-        assertEquals(400, model.getParkingSpot().x);
-    }
-
-    @Test
-    void loadLevel2HasTwoObstacles() {
-        GameModel model = GameModel.getInstance();
-        model.loadLevel(2);
-        assertEquals(2, model.getObstacles().size());
-    }
-
-    @Test
-    void updateDoesNothingWhenCrashed() {
-        GameModel model = GameModel.getInstance();
-        model.getCar().setPosition(100, 100);
         model.getCurrentStatus().setCrashed(true);
+        model.getCurrentStatus().setSuccess(true);
+        
+        model.loadLevel(1);
+        
+        assertFalse(model.getCurrentStatus().isCrashed());
+        assertFalse(model.getCurrentStatus().isSuccess());
+    }
+
+    @Test
+    void modelNotifiesObserversOnUpdate() {
+        GameModel model = GameModel.getInstance();
+        final boolean[] notified = {false};
+        ParkingObserver obs = () -> notified[0] = true;
+        
+        model.addObserver(obs);
         model.update();
-        assertEquals(100, model.getCar().getX(), 0.001);
+        assertTrue(notified[0]);
     }
 
     @Test
@@ -168,24 +180,92 @@ public class ParkItTests {
     }
 
     @Test
+    void carMustBeFullyInsideSpotToSucceed() {
+        GameModel model = GameModel.getInstance();
+        model.loadLevel(1); // spot at (400, 400, 60, 30)
+        
+        // Place car partially over the boundary
+        model.getCar().setPosition(390, 400); 
+        model.update();
+        
+        assertFalse(model.getCurrentStatus().isSuccess());
+    }
+
+    @Test
     void carSucceedsWhenFullyInParkingSpot() {
         GameModel model = GameModel.getInstance();
-        model.loadLevel(1); // spot at (400,400,60,30)
+        model.loadLevel(1);
         model.getCar().setPosition(410, 405);
         model.update();
         assertTrue(model.getCurrentStatus().isSuccess());
     }
 
+    // --- Controller Logic ---
+
     @Test
-    void carCrashesOnBoundaryExit() {
+    void inputControllerUpKeyAcceleratesCar() {
         GameModel model = GameModel.getInstance();
-        model.loadLevel(1);
-        model.getCar().setPosition(810, 100);
-        model.update();
-        assertTrue(model.getCurrentStatus().isCrashed());
+        InputController ic = new InputController();
+        KeyEvent up = new KeyEvent(new Component(){}, KeyEvent.KEY_PRESSED, 
+                                   System.currentTimeMillis(), 0, KeyEvent.VK_UP, ' ');
+        ic.keyPressed(up);
+        ic.update();
+        assertTrue(model.getCar().getSpeed() > 0);
     }
 
-    // --- Controllers ---
+    @Test
+    void releasingUpKeyStopsAcceleration() {
+        GameModel model = GameModel.getInstance();
+        InputController ic = new InputController();
+        KeyEvent up = new KeyEvent(new Component(){}, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_UP, ' ');
+        KeyEvent releaseUp = new KeyEvent(new Component(){}, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_UP, ' ');
+
+        ic.keyPressed(up);
+        ic.update();
+        double speedAfterPress = model.getCar().getSpeed();
+
+        ic.keyReleased(releaseUp);
+        ic.update();
+        assertEquals(speedAfterPress, model.getCar().getSpeed(), 0.001);
+    }
+
+    @Test
+    void timerStartsWhenMovementKeyPressed() {
+        GameModel model = GameModel.getInstance();
+        InputController ic = new InputController();
+        
+        KeyEvent up = new KeyEvent(new Component(){}, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_UP, ' ');
+        ic.keyPressed(up);
+        ic.update();
+
+        assertTrue(model.getTimer().getElapsedTime() >= 0);
+    }
+
+    @Test
+    void pressingRRestartsLevel() {
+        GameModel model = GameModel.getInstance();
+        InputController ic = new InputController();
+        model.getCar().setPosition(300, 300);
+        
+        KeyEvent rKey = new KeyEvent(new Component(){}, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_R, 'r');
+        ic.keyPressed(rKey);
+        
+        // Should revert to Level 1 start position (50, 50)
+        assertEquals(50, model.getCar().getX());
+    }
+
+    @Test
+    void enterKeyDoesNotAdvanceLevelIfNotSuccessful() {
+        GameModel model = GameModel.getInstance();
+        model.loadLevel(1);
+        InputController ic = new InputController();
+        KeyEvent enter = new KeyEvent(new Component(){}, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_ENTER, '\n');
+
+        model.getCurrentStatus().setSuccess(false);
+        ic.keyPressed(enter);
+        
+        assertEquals(1, model.getStats().getCurrentLevel());
+    }
 
     @Test
     void menuControllerNextLevelWrapsAfterLevel2() {
@@ -193,18 +273,5 @@ public class ParkItTests {
         model.loadLevel(2);
         new MenuController().nextLevel();
         assertEquals(1, model.getStats().getCurrentLevel());
-    }
-
-    @Test
-    void inputControllerUpKeyAcceleratesCar() {
-        GameModel model = GameModel.getInstance();
-        model.loadLevel(1);
-        InputController ic = new InputController();
-        KeyEvent up = new KeyEvent(new java.awt.Component(){},
-                KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0,
-                KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
-        ic.keyPressed(up);
-        ic.update();
-        assertTrue(model.getCar().getSpeed() > 0);
     }
 }

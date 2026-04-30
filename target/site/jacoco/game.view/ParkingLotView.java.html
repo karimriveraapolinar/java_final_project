@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ParkingLotView.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">park-it</a> &gt; <a href="index.source.html" class="el_package">game.view</a> &gt; <span class="el_source">ParkingLotView.java</span></div><h1>ParkingLotView.java</h1><pre class="source lang-java linenums">package game.view;
+
+import game.model.GameModel;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
+/**
+ * Renders the parking lots, obstacles, and roads.
+ */
+<span class="nc" id="L11">public class ParkingLotView {</span>
+    public void draw(Graphics g) {
+<span class="nc" id="L13">        GameModel model = GameModel.getInstance();</span>
+        
+        // Draw background (road/ground)
+<span class="nc" id="L16">        g.setColor(Color.DARK_GRAY);</span>
+<span class="nc" id="L17">        g.fillRect(0, 0, 800, 600);</span>
+        
+        // Draw parking spot
+<span class="nc" id="L20">        Rectangle spot = model.getParkingSpot();</span>
+<span class="nc" id="L21">        g.setColor(Color.GREEN);</span>
+<span class="nc" id="L22">        g.drawRect(spot.x, spot.y, spot.width, spot.height);</span>
+<span class="nc" id="L23">        g.setColor(new Color(0, 255, 0, 50)); // Transparent green</span>
+<span class="nc" id="L24">        g.fillRect(spot.x, spot.y, spot.width, spot.height);</span>
+        
+        // Draw obstacles (walls)
+<span class="nc" id="L27">        g.setColor(Color.RED);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        for (Rectangle obs : model.getObstacles()) {</span>
+<span class="nc" id="L29">            g.fillRect(obs.x, obs.y, obs.width, obs.height);</span>
+        }
+<span class="nc" id="L31">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
