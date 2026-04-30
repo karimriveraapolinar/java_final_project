@@ -25,14 +25,14 @@ public class InputController extends KeyAdapter {
 
     @Override
     public void keyReleased(KeyEvent e) {
-<span class="nc" id="L28">        pressedKeys.remove(e.getKeyCode());</span>
-<span class="nc" id="L29">    }</span>
+<span class="fc" id="L28">        pressedKeys.remove(e.getKeyCode());</span>
+<span class="fc" id="L29">    }</span>
 
     private void handleActionKeys(int keyCode) {
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (keyCode == KeyEvent.VK_R) {</span>
-<span class="nc" id="L33">            menuController.restartLevel();</span>
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        } else if (keyCode == KeyEvent.VK_ENTER) {</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">            if (GameModel.getInstance().getCurrentStatus().isSuccess()) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (keyCode == KeyEvent.VK_R) {</span>
+<span class="fc" id="L33">            menuController.restartLevel();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        } else if (keyCode == KeyEvent.VK_ENTER) {</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">            if (GameModel.getInstance().getCurrentStatus().isSuccess()) {</span>
 <span class="nc" id="L36">                menuController.nextLevel();</span>
             }
         }
@@ -44,7 +44,7 @@ public class InputController extends KeyAdapter {
 <span class="nc" id="L44">            return;</span>
         }
 
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (pressedKeys.contains(KeyEvent.VK_UP)) {</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (pressedKeys.contains(KeyEvent.VK_UP)) {</span>
 <span class="fc" id="L48">            model.getCar().accelerate();</span>
 <span class="fc" id="L49">            model.getTimer().start();</span>
         }

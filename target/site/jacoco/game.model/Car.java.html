@@ -37,10 +37,10 @@ public class Car {
 <span class="fc" id="L37">        y += Math.sin(Math.toRadians(angle)) * speed;</span>
         
         // Apply friction
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (speed &gt; 0) speed -= friction;</span>
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">        else if (speed &lt; 0) speed += friction;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (speed &gt; 0) speed -= friction;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        else if (speed &lt; 0) speed += friction;</span>
         
-<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (Math.abs(speed) &lt; friction) speed = 0;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (Math.abs(speed) &lt; friction) speed = 0;</span>
 <span class="fc" id="L44">    }</span>
 
     public void accelerate() {
@@ -58,10 +58,10 @@ public class Car {
 <span class="fc" id="L58">    }</span>
 
     public void turnRight() {
-<span class="nc bnc" id="L61" title="All 2 branches missed.">        if (speed != 0) {</span>
-<span class="nc" id="L62">            angle += turnSpeed;</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        if (speed != 0) {</span>
+<span class="fc" id="L62">            angle += turnSpeed;</span>
         }
-<span class="nc" id="L64">    }</span>
+<span class="fc" id="L64">    }</span>
 
     public Rectangle getBounds() {
 <span class="fc" id="L67">        return new Rectangle((int) x, (int) y, width, height);</span>

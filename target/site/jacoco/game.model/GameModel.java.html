@@ -38,12 +38,12 @@ public class GameModel {
     }
 
     public void addObserver(ParkingObserver observer) {
-<span class="nc" id="L41">        observers.add(observer);</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L41">        observers.add(observer);</span>
+<span class="fc" id="L42">    }</span>
 
     public void notifyObservers() {
-<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        for (ParkingObserver observer : observers) {</span>
-<span class="nc" id="L46">            observer.update();</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (ParkingObserver observer : observers) {</span>
+<span class="fc" id="L46">            observer.update();</span>
         }
 <span class="fc" id="L48">    }</span>
 
