@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="game.ParkItTests" time="1.175" tests="42" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="game.ParkItTests" time="0.822" tests="42" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -11,7 +11,7 @@
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/local/sdkman/candidates/java/21.0.10-ms/lib"/>
-    <property name="sun.java.command" value="/workspaces/java_final_project/target/surefire/surefirebooter-20260430014453969_3.jar /workspaces/java_final_project/target/surefire 2026-04-30T01-44-53_835-jvmRun1 surefire-20260430014453969_1tmp surefire_0-20260430014453969_2tmp"/>
+    <property name="sun.java.command" value="/workspaces/java_final_project/target/surefire/surefirebooter-20260430014713849_3.jar /workspaces/java_final_project/target/surefire 2026-04-30T01-47-13_750-jvmRun1 surefire-20260430014713849_1tmp surefire_0-20260430014713849_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/workspaces/java_final_project/target/test-classes:/workspaces/java_final_project/target/classes:/home/codespace/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/home/codespace/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/home/codespace/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/codespace/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/home/codespace/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/codespace/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/home/codespace/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/home/codespace/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -26,7 +26,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/workspaces/java_final_project/target/surefire/surefirebooter-20260430014453969_3.jar"/>
+    <property name="surefire.real.class.path" value="/workspaces/java_final_project/target/surefire/surefirebooter-20260430014713849_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.10+7-LTS"/>
     <property name="user.name" value="codespace"/>
@@ -53,46 +53,46 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="frictionStopsLowSpeedExactly" classname="game.ParkItTests" time="0.253"/>
-  <testcase name="bestTimeUpdatesOnImprovement" classname="game.ParkItTests" time="0.008"/>
-  <testcase name="loadLevelResetsCarToStartPosition" classname="game.ParkItTests" time="0.092"/>
-  <testcase name="multipleObserversNotified" classname="game.ParkItTests" time="0.008"/>
-  <testcase name="reverseProducesNegativeSpeed" classname="game.ParkItTests" time="0.004"/>
+  <testcase name="frictionStopsLowSpeedExactly" classname="game.ParkItTests" time="0.19"/>
+  <testcase name="bestTimeUpdatesOnImprovement" classname="game.ParkItTests" time="0.006"/>
+  <testcase name="loadLevelResetsCarToStartPosition" classname="game.ParkItTests" time="0.026"/>
+  <testcase name="multipleObserversNotified" classname="game.ParkItTests" time="0.005"/>
+  <testcase name="reverseProducesNegativeSpeed" classname="game.ParkItTests" time="0.005"/>
   <testcase name="boundaryCheckTopWall" classname="game.ParkItTests" time="0.001"/>
   <testcase name="boundaryCheckLeftWall" classname="game.ParkItTests" time="0.003"/>
-  <testcase name="statsInitialValues" classname="game.ParkItTests" time="0.006"/>
-  <testcase name="inputControllerUpKeyAccelerates" classname="game.ParkItTests" time="0.221"/>
-  <testcase name="parkingStatusDefaultState" classname="game.ParkItTests" time="0.004"/>
+  <testcase name="statsInitialValues" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="inputControllerUpKeyAccelerates" classname="game.ParkItTests" time="0.091"/>
+  <testcase name="parkingStatusDefaultState" classname="game.ParkItTests" time="0.003"/>
   <testcase name="noUpdateOccursAfterCrash" classname="game.ParkItTests" time="0.001"/>
   <testcase name="timerNotRunningAfterReset" classname="game.ParkItTests" time="0.044"/>
-  <testcase name="parkingStatusDifficulty2" classname="game.ParkItTests" time="0.002"/>
-  <testcase name="accelerateIncreasesSpeed" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="loadLevelResetsCrashedStatus" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="parkingStatusDifficulty2" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="accelerateIncreasesSpeed" classname="game.ParkItTests" time="0.003"/>
+  <testcase name="loadLevelResetsCrashedStatus" classname="game.ParkItTests" time="0.0"/>
   <testcase name="timerResumesCorrectly" classname="game.ParkItTests" time="0.043"/>
-  <testcase name="loadLevel1HasOneObstacleAndCorrectSpot" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="inputControllerLeftKeyTurns" classname="game.ParkItTests" time="0.003"/>
+  <testcase name="loadLevel1HasOneObstacleAndCorrectSpot" classname="game.ParkItTests" time="0.002"/>
+  <testcase name="inputControllerLeftKeyTurns" classname="game.ParkItTests" time="0.001"/>
   <testcase name="turnLeftOnlyWorksWhenMoving" classname="game.ParkItTests" time="0.003"/>
-  <testcase name="bestTimeOutOfRangeReturnsZero" classname="game.ParkItTests" time="0.002"/>
-  <testcase name="carSucceedsWhenFullyInParkingSpot" classname="game.ParkItTests" time="0.0"/>
+  <testcase name="bestTimeOutOfRangeReturnsZero" classname="game.ParkItTests" time="0.003"/>
+  <testcase name="carSucceedsWhenFullyInParkingSpot" classname="game.ParkItTests" time="0.001"/>
   <testcase name="inputControllerRightKeyTurns" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="bestTimeNotUpdatedIfWorse" classname="game.ParkItTests" time="0.0"/>
+  <testcase name="bestTimeNotUpdatedIfWorse" classname="game.ParkItTests" time="0.003"/>
   <testcase name="boundaryCheckBottomWall" classname="game.ParkItTests" time="0.003"/>
   <testcase name="loadLevel2HasTwoObstaclesAndCorrectSpot" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="timerResetClearsElapsedTime" classname="game.ParkItTests" time="0.065"/>
-  <testcase name="timerFormatConsistency" classname="game.ParkItTests" time="0.006"/>
-  <testcase name="inputControllerDownKeyReverses" classname="game.ParkItTests" time="0.004"/>
+  <testcase name="timerResetClearsElapsedTime" classname="game.ParkItTests" time="0.045"/>
+  <testcase name="timerFormatConsistency" classname="game.ParkItTests" time="0.002"/>
+  <testcase name="inputControllerDownKeyReverses" classname="game.ParkItTests" time="0.003"/>
   <testcase name="turnRightOnlyWorksWhenMoving" classname="game.ParkItTests" time="0.0"/>
-  <testcase name="menuControllerNextLevelWrapsAfterLevel2" classname="game.ParkItTests" time="0.005"/>
-  <testcase name="carStartsAtGivenPosition" classname="game.ParkItTests" time="0.003"/>
-  <testcase name="menuControllerRestartKeepsCurrentLevel" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="menuControllerNextLevelWrapsAfterLevel2" classname="game.ParkItTests" time="0.004"/>
+  <testcase name="carStartsAtGivenPosition" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="menuControllerRestartKeepsCurrentLevel" classname="game.ParkItTests" time="0.0"/>
   <testcase name="pressingRRestartsLevel" classname="game.ParkItTests" time="0.003"/>
-  <testcase name="timerRunsAndFreezesOnStop" classname="game.ParkItTests" time="0.103"/>
+  <testcase name="timerRunsAndFreezesOnStop" classname="game.ParkItTests" time="0.101"/>
   <testcase name="boundaryCheckRightWall" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="carMovementFollowsTrig" classname="game.ParkItTests" time="0.002"/>
-  <testcase name="setPositionResetsSpeedAndAngle" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="enterKeyRequiresSuccessToAdvance" classname="game.ParkItTests" time="0.002"/>
-  <testcase name="enterKeyAdvancesLevelOnSuccess" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="carBoundsReflectsPosition" classname="game.ParkItTests" time="0.0"/>
-  <testcase name="obstacleCollisionCrashesCar" classname="game.ParkItTests" time="0.001"/>
-  <testcase name="carMustBeFullyInsideSpotToSucceed" classname="game.ParkItTests" time="0.002"/>
+  <testcase name="carMovementFollowsTrig" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="setPositionResetsSpeedAndAngle" classname="game.ParkItTests" time="0.0"/>
+  <testcase name="enterKeyRequiresSuccessToAdvance" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="enterKeyAdvancesLevelOnSuccess" classname="game.ParkItTests" time="0.004"/>
+  <testcase name="carBoundsReflectsPosition" classname="game.ParkItTests" time="0.001"/>
+  <testcase name="obstacleCollisionCrashesCar" classname="game.ParkItTests" time="0.002"/>
+  <testcase name="carMustBeFullyInsideSpotToSucceed" classname="game.ParkItTests" time="0.001"/>
 </testsuite>
