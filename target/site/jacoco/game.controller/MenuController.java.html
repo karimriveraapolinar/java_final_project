@@ -14,7 +14,7 @@ import game.model.GameModel;
     public void nextLevel() {
 <span class="fc" id="L15">        GameModel model = GameModel.getInstance();</span>
 <span class="fc" id="L16">        int next = model.getStats().getCurrentLevel() + 1;</span>
-<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        if (next &gt; 2) next = 1; // Loop back or end game</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (next &gt; 2) next = 1; // Loop back or end game</span>
 <span class="fc" id="L18">        model.loadLevel(next);</span>
 <span class="fc" id="L19">    }</span>
 }

@@ -32,8 +32,8 @@ public class InputController extends KeyAdapter {
 <span class="fc bfc" id="L32" title="All 2 branches covered.">        if (keyCode == KeyEvent.VK_R) {</span>
 <span class="fc" id="L33">            menuController.restartLevel();</span>
 <span class="fc bfc" id="L34" title="All 2 branches covered.">        } else if (keyCode == KeyEvent.VK_ENTER) {</span>
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">            if (GameModel.getInstance().getCurrentStatus().isSuccess()) {</span>
-<span class="nc" id="L36">                menuController.nextLevel();</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (GameModel.getInstance().getCurrentStatus().isSuccess()) {</span>
+<span class="fc" id="L36">                menuController.nextLevel();</span>
             }
         }
 <span class="fc" id="L39">    }</span>
@@ -48,15 +48,15 @@ public class InputController extends KeyAdapter {
 <span class="fc" id="L48">            model.getCar().accelerate();</span>
 <span class="fc" id="L49">            model.getTimer().start();</span>
         }
-<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        if (pressedKeys.contains(KeyEvent.VK_DOWN)) {</span>
-<span class="nc" id="L52">            model.getCar().reverse();</span>
-<span class="nc" id="L53">            model.getTimer().start();</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (pressedKeys.contains(KeyEvent.VK_DOWN)) {</span>
+<span class="fc" id="L52">            model.getCar().reverse();</span>
+<span class="fc" id="L53">            model.getTimer().start();</span>
         }
-<span class="pc bpc" id="L55" title="1 of 2 branches missed.">        if (pressedKeys.contains(KeyEvent.VK_LEFT)) {</span>
-<span class="nc" id="L56">            model.getCar().turnLeft();</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (pressedKeys.contains(KeyEvent.VK_LEFT)) {</span>
+<span class="fc" id="L56">            model.getCar().turnLeft();</span>
         }
-<span class="pc bpc" id="L58" title="1 of 2 branches missed.">        if (pressedKeys.contains(KeyEvent.VK_RIGHT)) {</span>
-<span class="nc" id="L59">            model.getCar().turnRight();</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (pressedKeys.contains(KeyEvent.VK_RIGHT)) {</span>
+<span class="fc" id="L59">            model.getCar().turnRight();</span>
         }
 <span class="fc" id="L61">    }</span>
 }

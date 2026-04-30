@@ -14,15 +14,15 @@ public class UserInterface extends JPanel implements ParkingObserver {
     private ParkingLotView lotView;
     private GameOverlay overlay;
 
-<span class="nc" id="L17">    public UserInterface() {</span>
-<span class="nc" id="L18">        this.setPreferredSize(new Dimension(800, 600));</span>
-<span class="nc" id="L19">        this.setFocusable(true);</span>
-<span class="nc" id="L20">        this.carView = new CarView();</span>
-<span class="nc" id="L21">        this.lotView = new ParkingLotView();</span>
-<span class="nc" id="L22">        this.overlay = new GameOverlay();</span>
+<span class="fc" id="L17">    public UserInterface() {</span>
+<span class="fc" id="L18">        this.setPreferredSize(new Dimension(800, 600));</span>
+<span class="fc" id="L19">        this.setFocusable(true);</span>
+<span class="fc" id="L20">        this.carView = new CarView();</span>
+<span class="fc" id="L21">        this.lotView = new ParkingLotView();</span>
+<span class="fc" id="L22">        this.overlay = new GameOverlay();</span>
         
-<span class="nc" id="L24">        GameModel.getInstance().addObserver(this);</span>
-<span class="nc" id="L25">    }</span>
+<span class="fc" id="L24">        GameModel.getInstance().addObserver(this);</span>
+<span class="fc" id="L25">    }</span>
 
     @Override
     protected void paintComponent(Graphics g) {
