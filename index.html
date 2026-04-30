@@ -299,11 +299,7 @@ class GameModel {
   loadLevel(level) {
     this.currentLevel = level;
     this.stats.currentLevel = level;
-    this.car.setPosition(60, 60);
     this.timer.reset();
-    this.crashed = false;
-    this.success = false;
-    this.obstacles = [];
 
     if (level === 1) {
       this.obstacles.push({ x: 0,   y: 0,   w: 800, h: 15 });
