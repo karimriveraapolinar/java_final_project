@@ -195,16 +195,14 @@ class Car {
     this.y = y;
     this.angle = 0;
     this.speed = 0;
-    this.acceleration = 0.15;
-    this.friction = 0.02;
+    this.acceleration = 0.12;
+    this.friction = 0.05;
     this.turnSpeed = 2.8;
     this.width = 40;
     this.height = 20;
   }
 
   move() {
-    const maxSpeed = 5;
-    this.speed = Math.max(-maxSpeed, Math.min(maxSpeed, this.speed));
     this.x += Math.cos(this.angle * Math.PI / 180) * this.speed;
     this.y += Math.sin(this.angle * Math.PI / 180) * this.speed;
     if (this.speed > 0) this.speed -= this.friction;
@@ -300,44 +298,77 @@ class GameModel {
     this.currentLevel = level;
     this.stats.currentLevel = level;
     this.timer.reset();
+    this.crashed = false;
+    this.success = false;
+    this.obstacles = [];
 
     if (level === 1) {
-      this.obstacles.push({ x: 0,   y: 0,   w: 800, h: 15 });
-      this.obstacles.push({ x: 0,   y: 515, w: 800, h: 15 });
+      // S-curve corridor: gap at bottom of first wall, gap at top of second wall
+      // Border walls top and bottom to force staying in lane
+      this.obstacles.push({ x: 0,   y: 0,   w: 800, h: 15 }); // top border
+      this.obstacles.push({ x: 0,   y: 515, w: 800, h: 15 }); // bottom border
+
+      // First wall — gap at the bottom (y 370–450)
       this.obstacles.push({ x: 220, y: 15,  w: 20, h: 355 });
       this.obstacles.push({ x: 220, y: 450, w: 20, h: 65 });
+
+      // Second wall — gap at the top (y 80–160)
       this.obstacles.push({ x: 460, y: 15,  w: 20, h: 65 });
       this.obstacles.push({ x: 460, y: 160, w: 20, h: 355 });
+
+      // Third wall — gap at bottom again (y 370–450)
       this.obstacles.push({ x: 680, y: 15,  w: 20, h: 355 });
       this.obstacles.push({ x: 680, y: 450, w: 20, h: 65 });
+
       this.parkingSpot = { x: 710, y: 230, w: 70, h: 35 };
       this.car.setPosition(30, 230);
+
     } else if (level === 2) {
-      this.obstacles.push({ x: 0,   y: 0,   w: 800, h: 15 });
-      this.obstacles.push({ x: 0,   y: 515, w: 800, h: 15 });
+      // Tight zigzag with narrow gaps — must thread through each opening
+      this.obstacles.push({ x: 0,   y: 0,   w: 800, h: 15 }); // top border
+      this.obstacles.push({ x: 0,   y: 515, w: 800, h: 15 }); // bottom border
+
+      // Wall 1: gap in middle-bottom (y 300-420)
       this.obstacles.push({ x: 160, y: 15,  w: 20, h: 285 });
       this.obstacles.push({ x: 160, y: 420, w: 20, h: 95 });
+
+      // Wall 2: gap in middle-top (y 100-220)
       this.obstacles.push({ x: 310, y: 15,  w: 20, h: 85 });
       this.obstacles.push({ x: 310, y: 220, w: 20, h: 295 });
+
+      // Wall 3: gap in middle-bottom again
       this.obstacles.push({ x: 460, y: 15,  w: 20, h: 285 });
       this.obstacles.push({ x: 460, y: 420, w: 20, h: 95 });
+
+      // Wall 4: gap in middle-top
       this.obstacles.push({ x: 610, y: 15,  w: 20, h: 85 });
       this.obstacles.push({ x: 610, y: 220, w: 20, h: 295 });
+
       this.parkingSpot = { x: 700, y: 380, w: 70, h: 35 };
       this.car.setPosition(30, 380);
+
     } else {
-      this.obstacles.push({ x: 0,   y: 0,   w: 800, h: 15 });
-      this.obstacles.push({ x: 0,   y: 515, w: 800, h: 15 });
-      this.obstacles.push({ x: 0,   y: 80,  w: 680, h: 20 });
-      this.obstacles.push({ x: 0,   y: 200, w: 580, h: 20 });
-      this.obstacles.push({ x: 680, y: 80,  w: 20, h: 340 });
-      this.obstacles.push({ x: 580, y: 200, w: 20, h: 240 });
-      this.obstacles.push({ x: 120, y: 420, w: 460, h: 20 });
-      this.obstacles.push({ x: 0,   y: 500, w: 700, h: 15 });
+      // Level 3: U-shaped corridor — go right, drop down, come back left to park
+      this.obstacles.push({ x: 0,   y: 0,   w: 800, h: 15 }); // top border
+      this.obstacles.push({ x: 0,   y: 515, w: 800, h: 15 }); // bottom border
+
+      // Top horizontal channel (ceiling + floor, open on right)
+      this.obstacles.push({ x: 0,   y: 80,  w: 680, h: 20 }); // ceiling
+      this.obstacles.push({ x: 0,   y: 200, w: 580, h: 20 }); // floor (gap on right to drop down)
+
+      // Right vertical channel (right wall + left wall, open at bottom)
+      this.obstacles.push({ x: 680, y: 80,  w: 20, h: 340 }); // right wall
+      this.obstacles.push({ x: 580, y: 200, w: 20, h: 240 }); // left wall (gap at top is entry)
+
+      // Bottom horizontal channel (ceiling + floor, open on left to exit)
+      this.obstacles.push({ x: 120, y: 420, w: 460, h: 20 }); // ceiling (gap on left)
+      this.obstacles.push({ x: 0,   y: 500, w: 700, h: 15 }); // floor
+
+      // Left wall closing off the bottom channel exit area
       this.obstacles.push({ x: 0,   y: 200, w: 20, h: 300 });
+
       this.parkingSpot = { x: 30, y: 445, w: 70, h: 35 };
       this.car.setPosition(30, 130);
-
     }
 
     this.notifyObservers();
