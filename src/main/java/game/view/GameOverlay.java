@@ -9,6 +9,10 @@ import java.awt.Graphics;
  * Displays overlay elements like timer, leaderboard, and menus.
  */
 public class GameOverlay {
+    /**
+     * Draws the text overlay, including timer and messages.
+     * @param g the graphics context to draw on.
+     */
     public void draw(Graphics g) {
         GameModel model = GameModel.getInstance();
         

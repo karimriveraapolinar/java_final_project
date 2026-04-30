@@ -9,6 +9,10 @@ import java.awt.Rectangle;
  * Renders the parking lots, obstacles, and roads.
  */
 public class ParkingLotView {
+    /**
+     * Draws the parking lot, including the spot and obstacles.
+     * @param g the graphics context to draw on.
+     */
     public void draw(Graphics g) {
         GameModel model = GameModel.getInstance();
         

@@ -38,6 +38,9 @@ public class InputController extends KeyAdapter {
         }
     }
 
+    /**
+     * Updates the car's state based on the keys currently being pressed.
+     */
     public void update() {
         GameModel model = GameModel.getInstance();
         if (model.getCurrentStatus().isCrashed() || model.getCurrentStatus().isSuccess()) {

@@ -22,14 +22,25 @@ public class PlayerStats {
         this.leaderboardRank = 0;
     }
 
+    /**
+     * @return the current level number.
+     */
     public int getCurrentLevel() {
         return currentLevel;
     }
 
+    /**
+     * @param currentLevel the level number to set.
+     */
     public void setCurrentLevel(int currentLevel) {
         this.currentLevel = currentLevel;
     }
 
+    /**
+     * Updates the best time for a level if the new time is faster.
+     * @param level the level number.
+     * @param time the completion time in milliseconds.
+     */
     public void updateBestTime(int level, long time) {
         if (level >= 1 && level <= bestTimes.size()) {
             if (time < bestTimes.get(level - 1)) {
@@ -38,6 +49,10 @@ public class PlayerStats {
         }
     }
 
+    /**
+     * @param level the level number.
+     * @return the best time for that level.
+     */
     public long getBestTime(int level) {
         if (level >= 1 && level <= bestTimes.size()) {
             return bestTimes.get(level - 1);
@@ -45,10 +60,16 @@ public class PlayerStats {
         return 0;
     }
 
+    /**
+     * @return the current rank on the leaderboard.
+     */
     public int getLeaderboardRank() {
         return leaderboardRank;
     }
 
+    /**
+     * @param leaderboardRank the rank to set.
+     */
     public void setLeaderboardRank(int leaderboardRank) {
         this.leaderboardRank = leaderboardRank;
     }

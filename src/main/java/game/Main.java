@@ -11,6 +11,10 @@ import javax.swing.Timer;
  * Initializes MVC components and starts the game loop.
  */
 public class Main {
+    /**
+     * The main method that sets up the game window and starts the game loop.
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame("Park It - Java Edition");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

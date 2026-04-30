@@ -33,6 +33,9 @@ public class UserInterface extends JPanel implements ParkingObserver {
         overlay.draw(g);
     }
 
+    /**
+     * Updates the screen by requesting a repaint.
+     */
     @Override
     public void update() {
         repaint();

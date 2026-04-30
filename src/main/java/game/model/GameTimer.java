@@ -12,11 +12,17 @@ public class GameTimer {
         reset();
     }
 
+    /**
+     * Starts or resumes the timer.
+     */
     public void start() {
         startTime = System.currentTimeMillis() - elapsedTime;
         running = true;
     }
 
+    /**
+     * Stops the timer.
+     */
     public void stop() {
         if (running) {
             elapsedTime = System.currentTimeMillis() - startTime;
@@ -24,12 +30,18 @@ public class GameTimer {
         }
     }
 
+    /**
+     * Resets the timer to zero.
+     */
     public void reset() {
         startTime = 0;
         elapsedTime = 0;
         running = false;
     }
 
+    /**
+     * @return the total time elapsed in milliseconds.
+     */
     public long getElapsedTime() {
         if (running) {
             return System.currentTimeMillis() - startTime;
@@ -37,6 +49,9 @@ public class GameTimer {
         return elapsedTime;
     }
 
+    /**
+     * @return the elapsed time as a MM:SS string.
+     */
     public String getFormattedTime() {
         long seconds = getElapsedTime() / 1000;
         long millis = (getElapsedTime() % 1000) / 10;

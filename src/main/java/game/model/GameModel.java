@@ -30,6 +30,9 @@ public class GameModel {
         loadLevel(1);
     }
 
+    /**
+     * @return the single instance of the GameModel.
+     */
     public static synchronized GameModel getInstance() {
         if (instance == null) {
             instance = new GameModel();
@@ -37,16 +40,27 @@ public class GameModel {
         return instance;
     }
 
+    /**
+     * Adds an observer to be notified of updates.
+     * @param observer the observer to add.
+     */
     public void addObserver(ParkingObserver observer) {
         observers.add(observer);
     }
 
+    /**
+     * Notifies all observers of changes in the model.
+     */
     public void notifyObservers() {
         for (ParkingObserver observer : observers) {
             observer.update();
         }
     }
 
+    /**
+     * Loads a specific level and sets up its obstacles.
+     * @param level the level number to load.
+     */
     public void loadLevel(int level) {
         stats.setCurrentLevel(level);
         currentStatus = new ParkingStatus(level);
@@ -67,6 +81,9 @@ public class GameModel {
         notifyObservers();
     }
 
+    /**
+     * Updates the game state for the current frame.
+     */
     public void update() {
         if (!currentStatus.isCrashed() && !currentStatus.isSuccess()) {
             car.move();
@@ -75,6 +92,9 @@ public class GameModel {
         }
     }
 
+    /**
+     * Checks for collisions with obstacles or boundaries.
+     */
     private void checkCollisions() {
         Rectangle carBounds = car.getBounds();
         
@@ -101,10 +121,16 @@ public class GameModel {
     }
 
     // Getters
+    /** @return the car object */
     public Car getCar() { return car; }
+    /** @return player statistics */
     public PlayerStats getStats() { return stats; }
+    /** @return current parking status */
     public ParkingStatus getCurrentStatus() { return currentStatus; }
+    /** @return the game timer */
     public GameTimer getTimer() { return timer; }
+    /** @return list of obstacles in the level */
     public List<Rectangle> getObstacles() { return obstacles; }
+    /** @return the target parking spot */
     public Rectangle getParkingSpot() { return parkingSpot; }
 }

@@ -11,6 +11,10 @@ import java.awt.geom.AffineTransform;
  * Handles the visual representation and movement animations of the car.
  */
 public class CarView {
+    /**
+     * Draws the car on the screen with its current rotation.
+     * @param g the graphics context to draw on.
+     */
     public void draw(Graphics g) {
         Car car = GameModel.getInstance().getCar();
         Graphics2D g2d = (Graphics2D) g;

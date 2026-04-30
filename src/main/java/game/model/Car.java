@@ -43,38 +43,65 @@ public class Car {
         if (Math.abs(speed) < friction) speed = 0;
     }
 
+    /**
+     * Speeds up the car.
+     */
     public void accelerate() {
         speed += acceleration;
     }
 
+    /**
+     * Moves the car in reverse.
+     */
     public void reverse() {
         speed -= acceleration;
     }
 
+    /**
+     * Turns the car to the left.
+     */
     public void turnLeft() {
         if (speed != 0) {
             angle -= turnSpeed;
         }
     }
 
+    /**
+     * Turns the car to the right.
+     */
     public void turnRight() {
         if (speed != 0) {
             angle += turnSpeed;
         }
     }
 
+    /**
+     * Gets the rectangular area covered by the car.
+     * @return The car's boundaries.
+     */
     public Rectangle getBounds() {
         return new Rectangle((int) x, (int) y, width, height);
     }
 
     // Getters and Setters
+    /** @return current x position */
     public double getX() { return x; }
+    /** @return current y position */
     public double getY() { return y; }
+    /** @return current angle in degrees */
     public double getAngle() { return angle; }
+    /** @return current speed */
     public double getSpeed() { return speed; }
+    /** @return width of the car */
     public int getWidth() { return width; }
+    /** @return height of the car */
     public int getHeight() { return height; }
 
+    /**
+     * Sets the car's position and resets its state.
+     * @param x New x position.
+     * @param y New y position.
+     */
     public void setPosition(double x, double y) {
         this.x = x;
         this.y = y;
